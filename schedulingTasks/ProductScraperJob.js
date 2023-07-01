@@ -1,6 +1,6 @@
-// const appErr = require("../utils/appErr");
+const appErr = require("../utils/appErr");
 const cheerio = require("cheerio");
-// const Product = require("../model/Product");
+const Product = require("../model/Product");
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = require("twilio")(accountSid, authToken);
@@ -35,12 +35,12 @@ const scrapeProduct = async (product) => {
     }
   }
 };
-const job = cron.schedule("0 0 * * *", async () => {
+const job = cron.schedule("* * * * *", async () => {
+  console.log("Cron job is running perfectly fine");
   const products = await getAllItemsByUrl();
   console.log(products);
   products.forEach(async (product) => {
     await scrapeProduct(product);
   });
 });
-
 job.start();

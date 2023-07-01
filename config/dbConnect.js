@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
 const dbConnect = async () => {
   try {
-    // mongoose.set("strictQuery", false);
-    await mongoose.connect(process.env.MONGO_URL);
+    await mongoose.connect("mongodb://localhost:27017");
     console.log("Connected to MongoDB");
   } catch (error) {
     console.log(error);

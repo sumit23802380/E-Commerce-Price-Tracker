@@ -10,5 +10,4 @@ const getMessage = async (req) => {
     throw appErr(error.message, 500);
   }
 };
-
 module.exports = { getMessage };

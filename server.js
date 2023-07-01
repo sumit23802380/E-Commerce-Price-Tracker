@@ -1,12 +1,11 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-// const cors = require("cors");
 require("./config/dbConnect");
 const productRoute = require("./routes/productRoute");
 const globalErrHandler = require("./middlewares/globalErrHandler");
 const { getMessage } = require("./controllers/ProductController");
-// const { appErr } = require("./utils/appErr");
+const { appErr } = require("./utils/appErr");
 require("./schedulingTasks/ProductScraperJob");
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
